@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var simSimiApiService: SimSimiApiService
 
 
+
     private val languageMap = mapOf(
         "English" to "en",
         "Spanish" to "es",
