@@ -1,6 +1,8 @@
 package com.kim.chatbotapi
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -8,6 +10,7 @@ import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -48,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         requestButton = findViewById(R.id.request_button)
         messageTextView = findViewById(R.id.message)
         val btnQuoteMaker = findViewById<Button>(R.id.btnQuoteMaker)
+        val btnImage = findViewById<Button>(R.id.btnGetImage)
 
         simSimiApiService = SimSimiApiService()
 
@@ -71,6 +75,10 @@ class MainActivity : AppCompatActivity() {
 
         btnQuoteMaker.setOnClickListener{
             getQuote()
+        }
+
+        btnImage.setOnClickListener{
+            getImage()
         }
 
     }
@@ -119,6 +127,31 @@ class MainActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 Log.d("AddNewUser", "Error: " + e.toString())
                 Text.setText("Error: " + e.toString())
+            }
+        }
+    }
+    private fun getImage(){
+        var image: Bitmap? = null
+        val imgQuote : ImageView = findViewById(R.id.imgQuote)
+        val handler = Handler(Looper.getMainLooper())
+        val executor = Executors.newSingleThreadExecutor()
+
+        executor.execute{
+            val imageURL = "https://zenquotes.io/api/image"
+            try
+            {
+                val `in` = java.net.URL(imageURL).openStream()
+                image = BitmapFactory.decodeStream(`in`)
+                Log.d("Welcome", "Image added "+ image.toString())
+                handler.post{
+                    Log.d("Welcome", "Image added")
+                    imgQuote.setImageBitmap(image)
+                }
+            }
+            catch (e:java.lang.Exception)
+            {
+                Log.d("Welcome", "Error occurred: $e")
+                e.printStackTrace()
             }
         }
     }
