@@ -28,11 +28,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var simSimiApiService: SimSimiApiService
 
 
-
+    private val choices = arrayOf("Pirate", "Yoda", "Minion")
     private val languageMap = mapOf(
-        "English" to "en",
-        "Spanish" to "es",
-        "French" to "fr",
+        "Yoda" to "yoda",
+        "Pirate" to "pirate",
+        "Minion" to "minion",
         "German" to "de",
         "Chinese" to "zh"
     )
@@ -52,18 +52,14 @@ class MainActivity : AppCompatActivity() {
         messageTextView = findViewById(R.id.message)
         val btnQuoteMaker = findViewById<Button>(R.id.btnQuoteMaker)
         val btnImage = findViewById<Button>(R.id.btnGetImage)
+        val btnTranslate = findViewById<Button>(R.id.request_button)
 
         simSimiApiService = SimSimiApiService()
 
         // Setup Spinner
-        val adapter = ArrayAdapter.createFromResource(
-            this,
-            R.array.languages,
-            android.R.layout.simple_spinner_item
-        )
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val adapter = ArrayAdapter(this,
+            android.R.layout.simple_spinner_item, choices)
         languageSpinner.adapter = adapter
-
         requestButton.setOnClickListener {
             val message = textEditText.text.toString()
             val languageName = languageSpinner.selectedItem.toString()
@@ -81,6 +77,10 @@ class MainActivity : AppCompatActivity() {
             getImage()
         }
 
+        btnTranslate.setOnClickListener {
+            val choice = languageSpinner.selectedItem.toString()
+            translateYoda(choice)
+        }
     }
 
     private fun sendMessage(message: String, lc: String) {
@@ -107,7 +107,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     private fun getQuote(){
         val executor = Executors.newSingleThreadExecutor()
-        var Text = findViewById<TextView>(R.id.txtQuote)
+        val Text = findViewById<TextView>(R.id.txtQuote)
         executor.execute {
             try {
                 val url = URL("https://zenquotes.io/api/random")
@@ -152,6 +152,43 @@ class MainActivity : AppCompatActivity() {
             {
                 Log.d("Welcome", "Error occurred: $e")
                 e.printStackTrace()
+            }
+        }
+    }
+    private fun translateYoda(choice: String){
+        var Text = findViewById<TextView>(R.id.txtQuote)
+        val executor = Executors.newSingleThreadExecutor()
+        var htmlString = ""
+        var quote = Text.text.toString().split(" -").toTypedArray()
+        val sentence = quote[0].split(" ").toTypedArray()
+        for (i in sentence.indices){
+            if(i == 0){
+                htmlString += "${sentence[i]}"
+            }
+            else{
+                htmlString = htmlString + "%20" + sentence[i]
+            }
+        }
+        executor.execute {
+            try {
+                val url = URL("https://api.funtranslations.com/translate/${choice}.json?text=${htmlString}")
+                val json = url.readText()
+                Log.d("Test", url.toString())
+                if(json.equals("null")){
+                    Handler(Looper.getMainLooper()).post{
+                        Text.setText("Member not found")
+                    }
+                }
+                else{
+                    val quote = Gson().fromJson(json, Translate::class.java)
+
+                    Handler(Looper.getMainLooper()).post {
+                        Text.setText(quote.translated + " - " + quote.translation)
+                    }
+                }
+            } catch (e: Exception) {
+                Log.d("AddNewUser", "Error: " + e.toString())
+                Text.setText("Error: " + e.toString())
             }
         }
     }
