@@ -180,10 +180,10 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 else{
-                    val quote = Gson().fromJson(json, Translate::class.java)
+                    val quote = Gson().fromJson(json, Response::class.java)
 
                     Handler(Looper.getMainLooper()).post {
-                        Text.setText(quote.translated + " - " + quote.translation)
+                        Text.setText(quote.contents.translated + " - " + quote.contents.translation)
                     }
                 }
             } catch (e: Exception) {

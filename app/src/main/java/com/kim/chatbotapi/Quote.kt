@@ -5,8 +5,11 @@ data class Quote (
     val a : String,
     val h : String
 )
-data class Translate (
+data class Contents (
     val translated: String,
     val text: String,
     val translation: String
+)
+data class Response(
+    val contents: Contents
 )
