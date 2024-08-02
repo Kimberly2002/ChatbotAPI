@@ -46,10 +46,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        textEditText = findViewById(R.id.text_editText)
         languageSpinner = findViewById(R.id.language_spinner)
         requestButton = findViewById(R.id.request_button)
-        messageTextView = findViewById(R.id.message)
         val btnQuoteMaker = findViewById<Button>(R.id.btnQuoteMaker)
         val btnImage = findViewById<Button>(R.id.btnGetImage)
         val btnTranslate = findViewById<Button>(R.id.request_button)
