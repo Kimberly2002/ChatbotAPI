@@ -1,48 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/newimage"
     android:orientation="vertical"
     android:padding="16dp">
-
 
 
     <Button
         android:id="@+id/btnQuoteMaker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Find" />
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="54dp"
+        android:text="Find"
+        app:layout_constraintBottom_toTopOf="@+id/imgQuote"
+        app:layout_constraintEnd_toEndOf="@+id/txtQuote"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuote" />
 
     <TextView
         android:id="@+id/txtQuote"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:layout_width="368dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginBottom="1dp"
+        android:text="To find an awesome quote for the day, click the find button below!"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnQuoteMaker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/request_button" />
 
     <Spinner
         android:id="@+id/language_spinner"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:entries="@array/languages" />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="1dp"
+        android:entries="@array/languages"
+        app:layout_constraintBottom_toTopOf="@+id/request_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/request_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Translate" />
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="60dp"
+        android:text="Translate"
+        app:layout_constraintBottom_toTopOf="@+id/txtQuote"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
         android:id="@+id/btnGetImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get Image" />
+        android:layout_marginBottom="51dp"
+        android:text="Get Image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imgQuote"
+        app:layout_constraintTop_toBottomOf="@+id/imgQuote" />
 
     <ImageView
         android:id="@+id/imgQuote"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="7dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnGetImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnQuoteMaker"
         tools:srcCompat="@tools:sample/avatars" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="42dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="66dp"
+        android:text="Quote / Translator API"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtQuote"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="24dp"
+        android:text="To change the language"
+        android:textSize="19dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/request_button"
+        app:layout_constraintEnd_toStartOf="@+id/request_button"
+        app:layout_constraintStart_toStartOf="@+id/language_spinner"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
