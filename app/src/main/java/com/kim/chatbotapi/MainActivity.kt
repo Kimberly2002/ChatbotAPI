@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
 
         // Setup Spinner
         val adapter = ArrayAdapter(this,
-            android.R.layout.simple_spinner_item, choices)
+            R.layout.spinner_item, choices)
         languageSpinner.adapter = adapter
         requestButton.setOnClickListener {
             val message = textEditText.text.toString()
