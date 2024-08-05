@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="Find"
+            android:text="Find Quote"
             android:textColor="#00FFFF"
             android:background="@drawable/button_background" />
 
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="Find"
+            android:text="Translate"
             android:textColor="#00FFFF"
             android:background="@drawable/button_background" />
 
@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="Find"
+            android:text="Get Image"
             android:textColor="#00FFFF"
             android:background="@drawable/button_background" />
 
