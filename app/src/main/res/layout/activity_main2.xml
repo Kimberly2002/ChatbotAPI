@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- GIF background -->
+    <pl.droidsonroids.gif.GifImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/lava_gif_bg"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true" />
+
+    <!-- Content overlay -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="HAVE FUN WITH THE QUOTE TRANSLATOR"
+            android:textColor="#00FFFF"
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnQuoteMaker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Find"
+            android:textColor="#00FFFF"
+            android:background="@drawable/button_background" />
+
+
+        <TextView
+            android:id="@+id/txtQuote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Your quote will appear here"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textColor="#00FFFF" />
+
+        <Spinner
+            android:id="@+id/language_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:entries="@array/languages"
+            android:popupBackground="#FFFFFF"
+            android:textColor="#00FFFF" />
+
+        <Button
+            android:id="@+id/request_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Find"
+            android:textColor="#00FFFF"
+            android:background="@drawable/button_background" />
+
+        <Button
+            android:id="@+id/btnGetImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:text="Find"
+            android:textColor="#00FFFF"
+            android:background="@drawable/button_background" />
+
+        <ImageView
+            android:id="@+id/imgQuote"
+            android:layout_width="match_parent"
+            android:layout_height="204dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            tools:srcCompat="@tools:sample/avatars" />
+
+    </LinearLayout>
+
+</FrameLayout>

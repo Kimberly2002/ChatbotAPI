@@ -52,5 +52,6 @@ dependencies {
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
     implementation("com.github.kittinunf.fuel:fuel-gson:2.3.1")
     implementation("com.google.code.gson:gson:2.8.7")
-    }
+    implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.29")
+}
 
